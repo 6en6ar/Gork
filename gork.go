@@ -38,7 +38,6 @@ func main() {
 		flag.Usage()
 		os.Exit(1)
 	}
-	//fmt.Println("Args : ", flag.NFlag())
 
 	banner := `
  _______  _______  ______    ___   _ 
