@@ -8,6 +8,8 @@ import (
 	"os"
 )
 
+var gurl string
+
 func GenerateLink(dork string) {
 	gurl := "https://www.google.com/search?q=" + url.QueryEscape(dork)
 	// write to .html
@@ -32,10 +34,16 @@ func ReadDorks(domain string) {
 
 var domain = flag.String("d", "", "domain for dorking")
 
+func usage() {
+	fmt.Printf("usage : -d <DOMAIN>\n")
+	os.Exit(0)
+}
 func main() {
+
+	flag.Usage = usage
 	flag.Parse()
-	if len(flag.Args()) == 0 {
-		flag.Usage()
+	if flag.NFlag() == 0 {
+		usage()
 		os.Exit(1)
 	}
 
@@ -52,6 +60,7 @@ func main() {
 
 `
 	fmt.Printf("Gorking...")
+	fmt.Println("hey")
 	fmt.Println(banner)
 	ReadDorks(*domain)
 }
